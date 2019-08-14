@@ -38,5 +38,3 @@ def gm_start_stop_engine(id, command):
     response_data = requests.post(url, json=data, headers=headers)
     
     return response_data.text
-
-

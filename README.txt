@@ -1,68 +1,50 @@
-README
+README.txt
 
 The tasks are as follows:
-
 -Implement the Smartcar spec by making HTTP requests to the GM API
 -Implement the Smartcar API specification using any frameworks or libraries as necessary
 -Provide tests for your API implementation
 -Write your code to be well structured and documented
 
+
+Desired workflow: 
 Client --> request => Smartcar API --> request => GM API
-
-The general workflow is as follows:
-RESTful API that is used to store users details, which will have CRUD (Create, Read, Update, Delete) functions, allowing us to create new user, get details of existing user, update details of existing user and delete existing user.
-
-The following endpoints:
-1. Vehicle info
-    -GET /vehicles/:id
-2. Security 
-    -GET /vehicles/:id/doors
-3. Fuel range
-    -GET /vehicles/:id/fuel
-4. Battery range
-    -GET /vehicles/:id/battery
-5. Start/Stop Engine
-    -POST /vehicles/:id/engine
-    Content-Type: application/json
-    {
-        "action": "START|STOP"
-    }
 
 
 File structure:
-
-constants.py
--This houses all the constants including the relevent Smartcar URLs, URI and API keys.
--To ensure privacy and discourage unwarranted use of the Smartcar API, the API keys are hidden as environment variables.
-
 server.py
--This contains code only relating to the server.
+-This file contains code only relating to the server.
 
-views.py
--This file contains all the routing.
+gm_api.py
+-This file contains the all the GM functions that makes HTTP post requests to the GM API (http://gmapi.azurewebsites.net). 
+-The functions return the contents of the response object.
+-The functions hit the following endpoints: 
+    getVehicleInfoService
+    getSecurityStatusService
+    getEnergyService
+    actionEngineService  
 
-smartcar_utils.py
--This file handles all the requests.
+smartcar_api.py
+-This file constructs all the Smartcar API endpoints using the flask_restful library. 
+-When each Smartcar endpoint is hit, the request runs the respective get/post request by first making an API call to the GM API then casting the response into json. The return statement then parses through the json to give the desired Smartcar format. 
 
 
-Last problem:
-Post because it was more difficult to test and was more involved because it required a request body
-look at reqparse 
-learning how to use flask restful 
+Major challenges
+Building the last Smartcar endpoint was the most challenging because it was a post request. It was more difficult to test and was more involved because it required a request body. 
 
 
-What I learned:
-Ternary operator
+New things I learned:
+Ternary operators
+Using the flask_restful library to build out endpoints.
 
-Enhancements:
-Instead of creating a function for each GM API call, make a general one that takes in the unique params; much of the code is repeated 
 
+Future enhancements:
+Instead of creating a function for each GM API call, make a general one that takes in the unique params as much of the code is repeated 
+Use a different tool instead of reqparser because it is going to be obsolete.
 
 
 Testing:
 Unit testing
-End to end testing
-Integration testing
 
 
 

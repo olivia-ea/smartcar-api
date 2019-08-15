@@ -28,9 +28,12 @@ smartcar_api.py
 -This file constructs all the Smartcar API endpoints using the flask_restful library. 
 -When each Smartcar endpoint is hit, the request runs the respective get/post request by first making an API call to the GM API then casting the response into json. The return statement then parses through the json to give the desired Smartcar format. 
 
+testing.py
+-Contains unit testing for above files.
+
 
 Major challenges
-Building the last Smartcar endpoint was the most challenging because it was a post request. It was more difficult to test and was more involved because it required a request body. 
+Building the last Smartcar endpoint was the most challenging because it was a post request which was more involved than the previous endpoints that just required get requests. It was also more difficult to test because it required a request body for the START/STOP commands. I was able to solve this problem by using the reqparse library that enabled me to add an "action" argument. Essentially, the reqparse created a parser that added the "action" argument to the parser and stored the parse arguement in a variable.  From there, I was able to build out the endpoint that returned "success" if executed and "error" if failed. This was tested using Postman. 
 
 
 New things I learned:
@@ -41,12 +44,14 @@ Using the flask_restful library to build out endpoints.
 Future enhancements:
 Instead of creating a function for each GM API call, make a general one that takes in the unique params as much of the code is repeated 
 Use a different tool instead of reqparser because it is going to be obsolete.
-
+Best practices: having a constants.py file--felt unnecessary because there was only one (GM_API_URL = 'http://gmapi.azurewebsites.net').
 
 Testing:
 Unit testing
 
-
+Check if user puts in valid input
+Check status code
+https://auth0.com/blog/mocking-api-calls-in-python/
 
 
 

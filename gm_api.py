@@ -1,8 +1,9 @@
 import requests
 
+# GM server
 GM_API_URL = 'http://gmapi.azurewebsites.net'
 
-# Functions that fetch JSON from respective GM API endpoints
+# GM functions that hit their respective GM endpoints and return the contents of their response.
 def gm_get_vehicle_info(id):
 
     url = f"{GM_API_URL}/getVehicleInfoService"
@@ -38,3 +39,4 @@ def gm_start_stop_engine(id, command):
     response_data = requests.post(url, json=data, headers=headers)
     
     return response_data.text
+    

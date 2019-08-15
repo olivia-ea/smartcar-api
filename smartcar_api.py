@@ -9,7 +9,7 @@ app = Flask(__name__)
 api = Api(app)
 app.debug = True
 
-# TODO: write unit tests, finish README
+# TODO: write unit tests
 # look into error handling with bad/invalid requests
 # log network requests 
 

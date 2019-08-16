@@ -5,6 +5,8 @@
 * [Tech Stack](#tech-stack) 
 * [Setting Up/Installation](#installation)
 * [Files Explained](#files-explained)
+* [How Handle the Post Request](#post-request)
+* [Testing](#testing)
 * [Personal](#personal)
 
 ## Tasks
@@ -26,7 +28,7 @@ To run the Smartcar API on your local computer, follow these steps:
 
 Clone repository: 
 ```
-$ https://github.com/olivia-ea/smartcar-api.git
+$ git clone https://github.com/olivia-ea/smartcar-api.git
 ```
 
 Set up virtual environment: 
@@ -50,12 +52,12 @@ Run from the command line:
 $ python3 server.py
 ```
 
-Open localhost:5000 on browser.
+Open localhost:5000 on browser. 
 
 
 ## Files Explained
 ### server.py
-* This file contains code only relating to the server.
+* This file contains code only relating to the Smartcar server.
 
 ### gm_api.py
 * This file contains the all the GM functions that makes HTTP post requests to the GM API (http://gmapi.azurewebsites.net). 
@@ -71,7 +73,29 @@ Open localhost:5000 on browser.
 * When each Smartcar endpoint is hit, the request runs the respective get/post request by first making an API call to the GM API then casting the response into json. The return statement then parses through the json to give the desired Smartcar format. 
 
 ### testing.py
-* Contains unit testing for above files. There is an individual function to test each Smartcar API endpoint.
+* Contains unit testing for above files. There is an individual function to test each Smartcar API endpoint using assert statements.
+
+## Post Request
+
+Use Postman to access the post request for the Smartcar API. 
+
+1. First select "Post" request
+2. Enter 'http://localhost:5000/vehicles/1234/engine'
+3. Select headers and for key put 'Content-Type' and for value put 'application/json'
+4. Select body and for key put 'action' and for value put 'START' or 'STOP'
+5. Press send
+
+## Testing
+
+In order to run the unit tests in the testing.py file, first run the Smartcar server and then the nosetest.
+
+```
+$ python3 server.py
+```
+
+```
+$ nosetests --verbosity=2 testing.py
+```
 
 ## Personal 
 

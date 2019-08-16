@@ -79,8 +79,13 @@ Open localhost:5000 on browser.
 
 Use Postman to access the post request for the Smartcar API. 
 
-1. First select "Post" request
-2. Enter 'http://localhost:5000/vehicles/1234/engine'
+1. Run the Smartcar server
+
+```
+$ python3 server.py
+```
+
+2. Select "Post" request and enter 'http://localhost:5000/vehicles/1234/engine'
 3. Select headers and for key put 'Content-Type' and for value put 'application/json'
 4. Select body and for key put 'action' and for value put 'START' or 'STOP'
 5. Press send

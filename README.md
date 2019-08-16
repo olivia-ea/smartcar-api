@@ -105,17 +105,18 @@ $ nosetests --verbosity=2 testing.py
 ## Personal 
 
 ### Major challenges
-Building the last Smartcar endpoint was the most challenging because it was a post request which was more involved than the previous endpoints that just required get requests. It was also more difficult to test because it required a request body for the START/STOP commands. I was able to solve this problem by using the reqparse library that enabled me to add an "action" argument. Essentially, the reqparse created a parser that added the "action" argument to the parser and stored the parse arguement in a variable.  From there, I was able to build out the endpoint that returned "success" if executed and "error" if failed. This was tested using Postman. 
+Building the last Smartcar endpoint was the most challenging because it was a post request which was more involved than the previous endpoints that just required get requests. It was also more difficult to test because it required a request body for the START/STOP commands. I was able to solve this problem by using the reqparse library that enabled me to add an "action" argument. Essentially, the reqparse created a parser that added the "action" argument to the parser and stored the parse arguement in a variable.  From there, I was able to build out the endpoint that returned "success" if executed and "error" if failed. 
 
 
 ### New things I learned:
-* Ternary operators
+* Ternary operators.
 * Using the flask_restful library to build out endpoints.
 
 
 ### Future enhancements:
 * Use a different tool instead of reqparser because it is going to be obsolete.
 * It's good practices to have a constants.py file to store all constant URLs. However, it felt unnecessary because there was only one (GM_API_URL = 'http://gmapi.azurewebsites.net').
+* Use mocking for testing to avoid having to run the server to execute the tests.
 
 
 

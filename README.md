@@ -29,7 +29,7 @@ smartcar_api.py
 -When each Smartcar endpoint is hit, the request runs the respective get/post request by first making an API call to the GM API then casting the response into json. The return statement then parses through the json to give the desired Smartcar format. 
 
 testing.py
--Contains unit testing for above files.
+-Contains unit testing for above files. There is an individual function to test each Smartcar API endpoint.
 
 
 Major challenges
@@ -46,12 +46,6 @@ Instead of creating a function for each GM API call, make a general one that tak
 Use a different tool instead of reqparser because it is going to be obsolete.
 Best practices: having a constants.py file--felt unnecessary because there was only one (GM_API_URL = 'http://gmapi.azurewebsites.net').
 
-Testing:
-Unit testing
-
-Check if user puts in valid input
-Check status code
-https://auth0.com/blog/mocking-api-calls-in-python/
 
 
 

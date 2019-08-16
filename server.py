@@ -1,5 +1,6 @@
 from smartcar_api import app
 
+# Smartcar server
 if __name__ == '__main__':
 
     app.debug = True

@@ -11,6 +11,7 @@ api = Api(app)
 app.debug = True
 
 
+# Smartcar API endpoints
 class VehicleID(Resource):
     def get(self, id):
         vehicle = gm_get_vehicle_info(id)
@@ -23,7 +24,6 @@ class VehicleID(Resource):
                     "doorCount": 4 if jsonified["data"]["fourDoorSedan"]["value"] == 'True' else 2,
                     "driveTrain": jsonified["data"]["driveTrain"]["value"]
                     }, 200
-
         else:
             return "404 ERROR", 404
        
@@ -56,7 +56,6 @@ class Security(Resource):
                       }
          
                     ], 200
-
         else:
             return "404 ERROR", 404
 
@@ -89,7 +88,6 @@ class EnergyService(Resource):
             return {
                     "percent": float(jsonified["data"]["batteryLevel"]["value"]) if jsonified["data"]["batteryLevel"]["value"] != "null" else "null"
                     }
-
         else:
             return "404 ERROR", 404
 

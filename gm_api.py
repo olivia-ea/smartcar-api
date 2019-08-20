@@ -3,40 +3,38 @@ import requests
 # GM server
 GM_API_URL = 'http://gmapi.azurewebsites.net'
 
-# GM functions that hit their respective GM endpoints and return the contents of their response.
-def gm_get_vehicle_info(id):
 
+"""GM functions that hit their respective GM endpoints
+and return the contents of their response."""
+
+
+def gm_get_vehicle_info(id):
     url = f"{GM_API_URL}/getVehicleInfoService"
-    data = {"id": id,"responseType": "JSON"}
+    data = {"id": id, "responseType": "JSON"}
     headers = {'Content-type': 'application/json'}
     response_data = requests.post(url, json=data, headers=headers)
-
     return response_data.text
+
 
 def gm_get_security_info(id):
-
     url = f"{GM_API_URL}/getSecurityStatusService"
-    data = {"id": id,"responseType": "JSON"}
+    data = {"id": id, "responseType": "JSON"}
     headers = {'Content-type': 'application/json'}
     response_data = requests.post(url, json=data, headers=headers)
-    
     return response_data.text
+
 
 def gm_get_fuel_battery_level(id):
-
     url = f"{GM_API_URL}/getEnergyService"
-    data = {"id": id,"responseType": "JSON"}
+    data = {"id": id, "responseType": "JSON"}
     headers = {'Content-type': 'application/json'}
     response_data = requests.post(url, json=data, headers=headers)
-    
     return response_data.text
 
-def gm_start_stop_engine(id, command):
 
+def gm_start_stop_engine(id, command):
     url = f"{GM_API_URL}/actionEngineService"
     data = {"id": id, "command": command, "responseType": "JSON"}
     headers = {'Content-type': 'application/json'}
     response_data = requests.post(url, json=data, headers=headers)
-    
     return response_data.text
-    

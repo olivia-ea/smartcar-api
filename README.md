@@ -74,6 +74,10 @@ Open localhost:5000 on browser.
 
 ### testing.py
 * Contains unit testing for above files. There is an individual function to test each Smartcar API endpoint using assert statements. The valid id tests are checking for a 200 status code and if a response is present whereas the invalid id tests are checking for a 404 status code.
+* Addition: Added more assert statements to match expected json responses.
+
+### logger_util.py and smartcarlog.log
+* Creates and configures the logger to document logs in a new smartcarlog.log file. Each log contains the level name, time stamp and respective message. The level is also set to log all levels. 
 
 ## Post Request
 
@@ -119,6 +123,15 @@ Building the last Smartcar endpoint was the most challenging because it was a po
 * Use mocking for testing to avoid having to run the server to execute the tests.
 
 
+### Feedback
+* Code style: spacing inconsistency and line length was long.
+    + Installed flake8 to lint files and make more readable.
+* Logging: log every instance that happens
+    + Imported logging module to write logs into a smartcarlog.log file. Configured to include the log level, time stamp and to include a message.
+* Testing: add more comprehensive testing, previously only checked for success status.
+    + Added additional assert statements to check if the jsonified response gave the expected output.
+* Error handling: did not have unexpected status code, add more variety of different types.
+    + Created a catch all case for each endpoint to throw an "Critical Error: Unexpected response from GM API" to handle unexpected user inputs. 
 
 
 

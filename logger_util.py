@@ -1,7 +1,7 @@
 import logging 
   
 # Create and configure logger 
-logging.basicConfig(filename="newfile.log", 
+logging.basicConfig(filename="smartcarlog.log", 
                     format='%(levelname)s %(asctime)s %(message)s', 
                     filemode='w') 
 logger = logging.getLogger()  

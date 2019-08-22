@@ -51,54 +51,86 @@ class Security(Resource):
         jsonified = json.loads(vehicle)
 
         if jsonified["status"] == "200":
-            smartcar_response = [
-                    {
-                      "location": (jsonified
-                                   ["data"]["doors"]["values"][1]
-                                   ["location"]["value"]),
-                      "locked": (True
-                                 if (jsonified
-                                     ["data"]["doors"]["values"][1]
-                                     ["locked"]["value"]
-                                     == 'True')
-                                 else False)
-                    },
-                    {
-                      "location": (jsonified
-                                   ["data"]["doors"]["values"][0]
-                                   ["location"]["value"]),
-                      "locked": (True
-                                 if (jsonified
-                                     ["data"]["doors"]["values"][0]
-                                     ["locked"]["value"]
-                                     == 'True')
-                                 else False)
-                    },
-                    {
-                      "location": (jsonified
-                                   ["data"]["doors"]["values"][2]
-                                   ["location"]["value"]),
-                      "locked": (True
-                                 if (jsonified
-                                     ["data"]["doors"]["values"][2]
-                                     ["locked"]["value"]
-                                     == 'True')
-                                 else False)
-                    },
-                    {
-                      "location": (jsonified
-                                   ["data"]["doors"]["values"][3]
-                                   ["location"]["value"]),
-                      "locked": (True
-                                 if (jsonified
-                                     ["data"]["doors"]["values"][3]
-                                     ["locked"]["value"]
-                                     == 'True')
-                                 else False)
-                    }
-                ]
-            logger.info(f"Request with id: {id}: \n{smartcar_response}")
-            return smartcar_response, 200
+            try:
+                smartcar_response = [
+                        {
+                          "location": (jsonified
+                                       ["data"]["doors"]["values"][1]
+                                       ["location"]["value"]),
+                          "locked": (True
+                                     if (jsonified
+                                         ["data"]["doors"]["values"][1]
+                                         ["locked"]["value"]
+                                         == 'True')
+                                     else False)
+                        },
+                        {
+                          "location": (jsonified
+                                       ["data"]["doors"]["values"][0]
+                                       ["location"]["value"]),
+                          "locked": (True
+                                     if (jsonified
+                                         ["data"]["doors"]["values"][0]
+                                         ["locked"]["value"]
+                                         == 'True')
+                                     else False)
+                        }
+                    ]
+
+            except:
+                pass
+            try:
+                smartcar_response = [
+                        {
+                          "location": (jsonified
+                                       ["data"]["doors"]["values"][1]
+                                       ["location"]["value"]),
+                          "locked": (True
+                                     if (jsonified
+                                         ["data"]["doors"]["values"][1]
+                                         ["locked"]["value"]
+                                         == 'True')
+                                     else False)
+                        },
+                        {
+                          "location": (jsonified
+                                       ["data"]["doors"]["values"][0]
+                                       ["location"]["value"]),
+                          "locked": (True
+                                     if (jsonified
+                                         ["data"]["doors"]["values"][0]
+                                         ["locked"]["value"]
+                                         == 'True')
+                                     else False)
+                        },
+                        {
+                          "location": (jsonified
+                                       ["data"]["doors"]["values"][2]
+                                       ["location"]["value"]),
+                          "locked": (True
+                                     if (jsonified
+                                         ["data"]["doors"]["values"][2]
+                                         ["locked"]["value"]
+                                         == 'True')
+                                     else False)
+                        },
+                        {
+                          "location": (jsonified
+                                       ["data"]["doors"]["values"][3]
+                                       ["location"]["value"]),
+                          "locked": (True
+                                     if (jsonified
+                                         ["data"]["doors"]["values"][3]
+                                         ["locked"]["value"]
+                                         == 'True')
+                                     else False)
+                        }
+                    ]
+            except:
+                pass
+            finally:
+                logger.info(f"Request with id: {id}: \n{smartcar_response}")
+                return smartcar_response, 200
 
         if jsonified["status"] == "404":
             logger.error(f"Request with id: {id}: \n{jsonified}")

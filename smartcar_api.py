@@ -2,12 +2,15 @@ from flask import Flask
 from flask_restful import Api, Resource, reqparse
 import json
 from gm_api import *
+from logger_util import logger
 
 
 app = Flask(__name__)
 api = Api(app)
 app.debug = True
 
+# TODO REFORMAT AND LINT
+# REFORMAT TO HAVE SMARTCAR_RESPONSE => VAR AND RETURN VAR
 
 # Smartcar API endpoints
 class VehicleID(Resource):
@@ -16,21 +19,28 @@ class VehicleID(Resource):
         jsonified = json.loads(vehicle)
 
         if jsonified["status"] == "200":
-            return {
-                    "vin": (jsonified
-                            ["data"]["vin"]["value"]),
-                    "color": (jsonified
-                              ["data"]["color"]["value"]),
-                    "doorCount": (4
-                                  if (jsonified
-                                      ["data"]["fourDoorSedan"]["value"]
-                                      == 'True')
-                                  else 2),
-                    "driveTrain": (jsonified
-                                   ["data"]["driveTrain"]["value"])
-                    }, 200
+            smart_response = {
+                            "vin": (jsonified
+                                    ["data"]["vin"]["value"]),
+                            "color": (jsonified
+                                      ["data"]["color"]["value"]),
+                            "doorCount": (4
+                                          if (jsonified
+                                              ["data"]["fourDoorSedan"]["value"]
+                                              == 'True')
+                                          else 2),
+                            "driveTrain": (jsonified
+                                           ["data"]["driveTrain"]["value"])
+                            }
+            logger.info(f"Request with id: {id}: \n{smart_response}")
+            return smart_response, 200
+        if jsonified["status"] == "404":
+            logger.error(f"Request with id: {id}: \n{jsonified}") 
+            return jsonified, 404
         else:
-            return "404 ERROR", 404
+            # Catch all case
+            logger.critical(f"Unexpected response from GM API")
+            return "Critical Error: Unexpected response from GM API", 404
 
 
 api.add_resource(VehicleID, "/vehicles/<string:id>")
@@ -42,6 +52,7 @@ class Security(Resource):
         jsonified = json.loads(vehicle)
 
         if jsonified["status"] == "200":
+            logger.info(f"Request with id: {id}: \n{jsonified}")
             return [
                       {
                         "location": (jsonified
@@ -89,8 +100,13 @@ class Security(Resource):
                       }
 
                     ], 200
+        if jsonified["status"] == "404":
+            logger.error(f"Request with id: {id}: \n{jsonified}") 
+            return jsonified, 404
         else:
-            return "404 ERROR", 404
+            # Catch all case
+            logger.critical(f"GM API Response did not return 200/404")
+            return "Critical Error: GM Response did not return 200/404", 404
 
 
 api.add_resource(Security, "/vehicles/<string:id>/doors")
@@ -102,6 +118,7 @@ class FuelService(Resource):
         jsonified = json.loads(vehicle)
 
         if jsonified["status"] == "200":
+            logger.info(f"Request with id: {id}: \n{jsonified}")
             return {
                     "percent": (float(jsonified
                                       ["data"]["tankLevel"]["value"])
@@ -110,8 +127,13 @@ class FuelService(Resource):
                                     != "null")
                                 else "null")
                     }, 200
+        if jsonified["status"] == "404":
+            logger.error(f"Request with id: {id}: \n{jsonified}") 
+            return jsonified, 404
         else:
-            return "404 ERROR", 404
+            # Catch all case
+            logger.critical(f"GM API Response did not return 200/404")
+            return "Critical Error: GM Response did not return 200/404", 404
 
 
 api.add_resource(FuelService, "/vehicles/<string:id>/fuel")
@@ -123,6 +145,7 @@ class EnergyService(Resource):
         jsonified = json.loads(vehicle)
 
         if jsonified["status"] == "200":
+            logger.info(f"Request with id: {id}: \n{jsonified}")
             return {
                     "percent": (float(jsonified
                                       ["data"]["batteryLevel"]["value"])
@@ -131,8 +154,13 @@ class EnergyService(Resource):
                                     != "null")
                                 else "null")
                     }, 200
+        if jsonified["status"] == "404":
+            logger.error(f"Request with id: {id}: \n{jsonified}") 
+            return jsonified, 404
         else:
-            return "404 ERROR", 404
+            # Catch all case
+            logger.critical(f"GM API Response did not return 200/404")
+            return "Critical Error: GM Response did not return 200/404", 404
 
 
 api.add_resource(EnergyService, "/vehicles/<string:id>/battery")
@@ -155,6 +183,7 @@ class EngineService(Resource):
         jsonified = json.loads(vehicle)
 
         if jsonified["status"] == "200":
+            logger.info(f"Request with id: {id}: \n{jsonified}")
             status = ""
 
             if jsonified["actionResult"]["status"] == "EXECUTED":
@@ -165,8 +194,13 @@ class EngineService(Resource):
             return {
                     "status": status
                     }, 200
+        if jsonified["status"] == "404":
+            logger.error(f"Request with id: {id}: \n{jsonified}") 
+            return jsonified, 404
         else:
-            return "404 ERROR", 404
+            # Catch all case
+            logger.critical(f"GM API Response did not return 200/404")
+            return "Critical Error: GM Response did not return 200/404", 404
 
 
 api.add_resource(EngineService, "/vehicles/<string:id>/engine")

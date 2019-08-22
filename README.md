@@ -132,7 +132,7 @@ Building the last Smartcar endpoint was the most challenging because it was a po
     + Added additional assert statements to check if the jsonified response gave the expected output.
 * Error handling: did not have unexpected status code, add more variety of different types.
     + Created a catch all case for each endpoint to throw an "Critical Error: Unexpected response from GM API" to handle unexpected user inputs. 
-
+* Additional refactoring: When testing the second time around, I was able to catch that the GM response had a different json response for the /getSecurityStatusService endpoint. The 1234 id had a four door car and the 1235 id had a two door car. I refactored the Smartcar API to first check if the car was a two door and then if it was a four door. This way, the Smartcar API is able to give the appropriate response. 
 
 
 

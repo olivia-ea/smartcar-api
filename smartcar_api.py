@@ -51,7 +51,8 @@ class Security(Resource):
         jsonified = json.loads(vehicle)
 
         if jsonified["status"] == "200":
-            try:
+            if len(jsonified["data"]["doors"]["values"]) == 2:
+                logger.info(f"id: {id}: \nChecking if 2 door...")
                 smartcar_response = [
                         {
                           "location": (jsonified
@@ -76,10 +77,10 @@ class Security(Resource):
                                      else False)
                         }
                     ]
-
-            except:
-                pass
-            try:
+                logger.info(f"Request with id: {id}: \n{smartcar_response}")
+                return smartcar_response, 200
+            if len(jsonified["data"]["doors"]["values"]) == 4:
+                logger.info(f"id: {id}: \nChecking if 4 door...")
                 smartcar_response = [
                         {
                           "location": (jsonified
@@ -126,12 +127,8 @@ class Security(Resource):
                                      else False)
                         }
                     ]
-            except:
-                pass
-            finally:
                 logger.info(f"Request with id: {id}: \n{smartcar_response}")
-                return smartcar_response, 200
-
+                return smartcar_response, 200                
         if jsonified["status"] == "404":
             logger.error(f"Request with id: {id}: \n{jsonified}")
             return jsonified, 404

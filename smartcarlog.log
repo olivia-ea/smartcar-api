@@ -1,2 +1,88 @@
-WARNING 2019-08-22 13:33:13,263  * Debugger is active!
-INFO 2019-08-22 13:33:13,277  * Debugger PIN: 149-267-411
+WARNING 2019-08-23 09:09:13,222  * Debugger is active!
+INFO 2019-08-23 09:09:13,240  * Debugger PIN: 149-267-411
+INFO 2019-08-23 09:09:35,049 127.0.0.1 - - [23/Aug/2019 09:09:35] "GET /vehicles HTTP/1.1" 404 -
+DEBUG 2019-08-23 09:09:55,586 Starting new HTTP connection (1): gmapi.azurewebsites.net:80
+DEBUG 2019-08-23 09:09:55,819 http://gmapi.azurewebsites.net:80 "POST /getVehicleInfoService HTTP/1.1" 200 281
+INFO 2019-08-23 09:09:55,823 Request with id: 1234: 
+{'vin': '123123412412', 'color': 'Metallic Silver', 'doorCount': 4, 'driveTrain': 'v8'}
+INFO 2019-08-23 09:09:55,824 127.0.0.1 - - [23/Aug/2019 09:09:55] "GET /vehicles/1234 HTTP/1.1" 200 -
+DEBUG 2019-08-23 09:10:02,979 Starting new HTTP connection (1): gmapi.azurewebsites.net:80
+DEBUG 2019-08-23 09:10:03,131 http://gmapi.azurewebsites.net:80 "POST /getVehicleInfoService HTTP/1.1" 200 168
+ERROR 2019-08-23 09:10:03,132 Request with id: 0000: 
+{'status': '404', 'reason': 'Vehicle id: 0000 not found.'}
+INFO 2019-08-23 09:10:03,133 127.0.0.1 - - [23/Aug/2019 09:10:03] "GET /vehicles/0000 HTTP/1.1" 404 -
+DEBUG 2019-08-23 09:10:12,529 Starting new HTTP connection (1): gmapi.azurewebsites.net:80
+DEBUG 2019-08-23 09:10:12,713 http://gmapi.azurewebsites.net:80 "POST /getSecurityStatusService HTTP/1.1" 200 283
+INFO 2019-08-23 09:10:12,715 Request with id: 1234: 
+[{'location': 'backRight', 'locked': True}, {'location': 'frontRight', 'locked': False}, {'location': 'frontLeft', 'locked': False}, {'location': 'backLeft', 'locked': True}]
+INFO 2019-08-23 09:10:12,716 127.0.0.1 - - [23/Aug/2019 09:10:12] "GET /vehicles/1234/doors HTTP/1.1" 200 -
+DEBUG 2019-08-23 09:10:16,155 Starting new HTTP connection (1): gmapi.azurewebsites.net:80
+DEBUG 2019-08-23 09:10:16,335 http://gmapi.azurewebsites.net:80 "POST /getSecurityStatusService HTTP/1.1" 200 260
+INFO 2019-08-23 09:10:16,336 Request with id: 1235: 
+[{'location': 'frontRight', 'locked': True}, {'location': 'frontLeft', 'locked': True}]
+INFO 2019-08-23 09:10:16,337 127.0.0.1 - - [23/Aug/2019 09:10:16] "GET /vehicles/1235/doors HTTP/1.1" 200 -
+DEBUG 2019-08-23 09:10:23,582 Starting new HTTP connection (1): gmapi.azurewebsites.net:80
+DEBUG 2019-08-23 09:10:23,704 http://gmapi.azurewebsites.net:80 "POST /getSecurityStatusService HTTP/1.1" 200 168
+ERROR 2019-08-23 09:10:23,706 Request with id: 0000: 
+{'status': '404', 'reason': 'Vehicle id: 0000 not found.'}
+INFO 2019-08-23 09:10:23,706 127.0.0.1 - - [23/Aug/2019 09:10:23] "GET /vehicles/0000/doors HTTP/1.1" 404 -
+DEBUG 2019-08-23 09:10:35,961 Starting new HTTP connection (1): gmapi.azurewebsites.net:80
+DEBUG 2019-08-23 09:10:36,102 http://gmapi.azurewebsites.net:80 "POST /getEnergyService HTTP/1.1" 200 216
+INFO 2019-08-23 09:10:36,104 Request with id: 1234: 
+{'percent': 19.49}
+INFO 2019-08-23 09:10:36,104 127.0.0.1 - - [23/Aug/2019 09:10:36] "GET /vehicles/1234/fuel HTTP/1.1" 200 -
+DEBUG 2019-08-23 09:10:38,793 Starting new HTTP connection (1): gmapi.azurewebsites.net:80
+DEBUG 2019-08-23 09:10:39,017 http://gmapi.azurewebsites.net:80 "POST /getEnergyService HTTP/1.1" 200 216
+INFO 2019-08-23 09:10:39,062 Request with id: 1235: 
+{'percent': 'null'}
+INFO 2019-08-23 09:10:39,063 127.0.0.1 - - [23/Aug/2019 09:10:39] "GET /vehicles/1235/fuel HTTP/1.1" 200 -
+DEBUG 2019-08-23 09:10:45,759 Starting new HTTP connection (1): gmapi.azurewebsites.net:80
+DEBUG 2019-08-23 09:10:45,894 http://gmapi.azurewebsites.net:80 "POST /getEnergyService HTTP/1.1" 200 168
+ERROR 2019-08-23 09:10:45,896 Request with id: 0000: 
+{'status': '404', 'reason': 'Vehicle id: 0000 not found.'}
+INFO 2019-08-23 09:10:45,896 127.0.0.1 - - [23/Aug/2019 09:10:45] "GET /vehicles/0000/fuel HTTP/1.1" 404 -
+DEBUG 2019-08-23 09:10:49,630 Starting new HTTP connection (1): gmapi.azurewebsites.net:80
+DEBUG 2019-08-23 09:10:49,754 http://gmapi.azurewebsites.net:80 "POST /getEnergyService HTTP/1.1" 200 168
+ERROR 2019-08-23 09:10:49,756 Request with id: 0000: 
+{'status': '404', 'reason': 'Vehicle id: 0000 not found.'}
+INFO 2019-08-23 09:10:49,756 127.0.0.1 - - [23/Aug/2019 09:10:49] "GET /vehicles/0000/battery HTTP/1.1" 404 -
+DEBUG 2019-08-23 09:10:54,503 Starting new HTTP connection (1): gmapi.azurewebsites.net:80
+DEBUG 2019-08-23 09:10:54,637 http://gmapi.azurewebsites.net:80 "POST /getEnergyService HTTP/1.1" 200 215
+INFO 2019-08-23 09:10:54,638 Request with id: 1234: 
+{'percent': 'null'}
+INFO 2019-08-23 09:10:54,639 127.0.0.1 - - [23/Aug/2019 09:10:54] "GET /vehicles/1234/battery HTTP/1.1" 200 -
+DEBUG 2019-08-23 09:10:58,469 Starting new HTTP connection (1): gmapi.azurewebsites.net:80
+DEBUG 2019-08-23 09:10:58,582 http://gmapi.azurewebsites.net:80 "POST /getEnergyService HTTP/1.1" 200 215
+INFO 2019-08-23 09:10:58,642 Request with id: 1235: 
+{'percent': 6.71}
+INFO 2019-08-23 09:10:58,642 127.0.0.1 - - [23/Aug/2019 09:10:58] "GET /vehicles/1235/battery HTTP/1.1" 200 -
+DEBUG 2019-08-23 09:11:20,366 Starting new HTTP connection (1): gmapi.azurewebsites.net:80
+DEBUG 2019-08-23 09:11:20,488 http://gmapi.azurewebsites.net:80 "POST /actionEngineService HTTP/1.1" 200 182
+INFO 2019-08-23 09:11:20,489 Request with id: 1234: 
+{'service': 'actionEngine', 'status': '200', 'actionResult': {'status': 'EXECUTED'}}
+INFO 2019-08-23 09:11:20,489 127.0.0.1 - - [23/Aug/2019 09:11:20] "POST /vehicles/1234/engine HTTP/1.1" 200 -
+DEBUG 2019-08-23 09:11:26,036 Starting new HTTP connection (1): gmapi.azurewebsites.net:80
+DEBUG 2019-08-23 09:11:26,151 http://gmapi.azurewebsites.net:80 "POST /actionEngineService HTTP/1.1" 200 180
+INFO 2019-08-23 09:11:26,152 Request with id: 1235: 
+{'service': 'actionEngine', 'status': '200', 'actionResult': {'status': 'FAILED'}}
+INFO 2019-08-23 09:11:26,153 127.0.0.1 - - [23/Aug/2019 09:11:26] "POST /vehicles/1235/engine HTTP/1.1" 200 -
+DEBUG 2019-08-23 09:11:28,052 Starting new HTTP connection (1): gmapi.azurewebsites.net:80
+DEBUG 2019-08-23 09:11:28,188 http://gmapi.azurewebsites.net:80 "POST /actionEngineService HTTP/1.1" 200 180
+INFO 2019-08-23 09:11:28,190 Request with id: 1235: 
+{'service': 'actionEngine', 'status': '200', 'actionResult': {'status': 'FAILED'}}
+INFO 2019-08-23 09:11:28,192 127.0.0.1 - - [23/Aug/2019 09:11:28] "POST /vehicles/1235/engine HTTP/1.1" 200 -
+DEBUG 2019-08-23 09:11:29,662 Starting new HTTP connection (1): gmapi.azurewebsites.net:80
+DEBUG 2019-08-23 09:11:29,789 http://gmapi.azurewebsites.net:80 "POST /actionEngineService HTTP/1.1" 200 180
+INFO 2019-08-23 09:11:29,791 Request with id: 1235: 
+{'service': 'actionEngine', 'status': '200', 'actionResult': {'status': 'FAILED'}}
+INFO 2019-08-23 09:11:29,791 127.0.0.1 - - [23/Aug/2019 09:11:29] "POST /vehicles/1235/engine HTTP/1.1" 200 -
+DEBUG 2019-08-23 09:11:31,673 Starting new HTTP connection (1): gmapi.azurewebsites.net:80
+DEBUG 2019-08-23 09:11:31,812 http://gmapi.azurewebsites.net:80 "POST /actionEngineService HTTP/1.1" 200 182
+INFO 2019-08-23 09:11:31,814 Request with id: 1235: 
+{'service': 'actionEngine', 'status': '200', 'actionResult': {'status': 'EXECUTED'}}
+INFO 2019-08-23 09:11:31,816 127.0.0.1 - - [23/Aug/2019 09:11:31] "POST /vehicles/1235/engine HTTP/1.1" 200 -
+DEBUG 2019-08-23 09:11:37,933 Starting new HTTP connection (1): gmapi.azurewebsites.net:80
+DEBUG 2019-08-23 09:11:38,059 http://gmapi.azurewebsites.net:80 "POST /actionEngineService HTTP/1.1" 200 168
+ERROR 2019-08-23 09:11:38,060 Request with id: 0000: 
+{'status': '404', 'reason': 'Vehicle id: 0000 not found.'}
+INFO 2019-08-23 09:11:38,062 127.0.0.1 - - [23/Aug/2019 09:11:38] "POST /vehicles/0000/engine HTTP/1.1" 404 -
